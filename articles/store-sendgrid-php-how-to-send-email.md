@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
-ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
+ms.author: erikre
+ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 
 ---
+
 # How to Use the SendGrid Email Service from PHP
 
 This guide demonstrates how to perform common programming tasks with the SendGrid email service on Azure. The samples are written in PHP.
 The scenarios covered include **constructing email**, **sending email**, and **adding attachments**. For more information on SendGrid and sending email, see the [Next Steps](#next-steps) section.
 
 ## What is the SendGrid Email Service?
+
 SendGrid is a [cloud-based email service] that provides reliable
 [transactional email delivery], scalability, and real-time analytics along with flexible APIs
 that make custom integration easy. Common SendGrid usage scenarios
@@ -123,6 +126,7 @@ involves creating instances of the `Swift\_SmtpTransport`, `Swift\_Mailer`, and 
 ```
 
 ### Web API
+
 Use PHP's [curl function][curl function] to send email using the SendGrid Web API.
 
 ```php
@@ -317,7 +321,7 @@ Use [Composer] to install library:
 php composer.phar require sendgrid/sendgrid 2.1.1
 ```
 
-### Example  
+### Example
 
 ```php
 <?php
@@ -412,7 +416,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  $response = $sendgrid->send($email);
 
  print_r($response);
- ```
+```
 
 ## Next Steps
 

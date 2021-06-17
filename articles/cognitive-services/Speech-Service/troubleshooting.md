@@ -1,16 +1,17 @@
 ---
-title: Troubleshoot the Speech SDK - Speech Services
+title: Troubleshoot the Speech SDK - Speech service
 titleSuffix: Azure Cognitive Services
 description: This article provides information to help you solve issues you might encounter when you use the Speech SDK.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ---
+
 # Troubleshoot the Speech SDK
 
 This article provides information to help you solve issues you might encounter when you use the Speech SDK.
@@ -44,7 +45,7 @@ You can verify that you have a valid subscription key by running one of the foll
 
 * PowerShell
 
-    ```Powershell
+    ```powershell
     $FetchTokenHeader = @{
       'Content-type'='application/x-www-form-urlencoded'
       'Content-Length'= '0'
@@ -71,7 +72,7 @@ If you use an authorization token for authentication, run one of the following c
 
 * PowerShell
 
-    ```Powershell
+    ```powershell
     $SpeechServiceURI =
     'https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US'
 

@@ -7,6 +7,7 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
+ms.custom: mqtt
 ---
 
 # Send cloud-to-device messages with IoT Hub (iOS)
@@ -32,9 +33,9 @@ At the end of this article, you run two Swift iOS projects:
 * **sample-service**, which sends a cloud-to-device message to the simulated device app through IoT Hub, and then receives its delivery acknowledgment.
 
 > [!NOTE]
-> IoT Hub has SDK support for many device platforms and languages (including C, Java, and Javascript) through Azure IoT device SDKs. For step-by-step instructions on how to connect your device to this tutorial's code, and generally to Azure IoT Hub, see the [Azure IoT Developer Center](https://www.azure.com/develop/iot).
+> IoT Hub has SDK support for many device platforms and languages (including C, Java, Python, and Javascript) through Azure IoT device SDKs. For step-by-step instructions on how to connect your device to this tutorial's code, and generally to Azure IoT Hub, see the [Azure IoT Developer Center](https://www.azure.com/develop/iot).
 
-To complete this tutorial, you need the following:
+## Prerequisites
 
 * An active Azure account. (If you don't have an account, you can create a [free account](https://azure.microsoft.com/pricing/free-trial/) in just a couple of minutes.)
 
@@ -45,6 +46,8 @@ To complete this tutorial, you need the following:
 * The latest version of [XCode](https://developer.apple.com/xcode/), running the latest version of the iOS SDK. This quickstart was tested with XCode 9.3 and iOS 11.3.
 
 * The latest version of [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
+
+* Make sure that port 8883 is open in your firewall. The device sample in this article uses MQTT protocol, which communicates over port 8883. This port may be blocked in some corporate and educational network environments. For more information and ways to work around this issue, see [Connecting to IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## Simulate an IoT device
 
@@ -94,7 +97,13 @@ Along with installing the pods required for your project, the installation comma
 
 6. Run the project in the device emulator with the **Build and run** button or the key combo **command + r**.
 
-   ![Run the project](media/iot-hub-ios-swift-c2d/run-sample.png)
+   ![Screenshot shows the Build and run button in the device emulator.](media/iot-hub-ios-swift-c2d/run-sample.png)
+
+## Get the IoT hub connection string
+
+In this article you create a backend service to send cloud-to-device messages through the IoT hub you created in [Send telemetry from a device to an IoT hub](quickstart-send-telemetry-ios.md). To send cloud-to-device messages, your service needs the **service connect** permission. By default, every IoT Hub is created with a shared access policy named **service** that grants this permission.
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## Simulate a service device
 
@@ -120,33 +129,27 @@ Along with installing the pods required for your project, the installation comma
 
 ### Run the sample service application
 
-1. Retrieve the service connection string for your IoT hub. You can copy this string from the [Azure portal](https://portal.azure.com) from the **iothubowner** policy in the **Shared access policies** blade, or retrieve it with the following CLI command:  
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --output table
-    ```
-
-2. Open the sample workspace in XCode.
+1. Open the sample workspace in XCode.
 
    ```sh
    open AzureIoTServiceSample.xcworkspace
    ```
 
-3. Expand the **AzureIoTServiceSample** project and then expand the folder of the same name.  
+2. Expand the **AzureIoTServiceSample** project and then expand the folder of the same name.  
 
-4. Open **ViewController.swift** for editing in XCode. 
+3. Open **ViewController.swift** for editing in XCode. 
 
-5. Search for the **connectionString** variable and update the value with the service connection string that you copied previously.
+4. Search for the **connectionString** variable and update the value with the service connection string that you copied previously in [Get the IoT hub connection string](#get-the-iot-hub-connection-string).
 
-6. Save your changes.
+5. Save your changes.
 
-7. In Xcode, change the emulator settings to a different iOS device than you used to run the IoT device. XCode cannot run multiple emulators of the same type.
+6. In Xcode, change the emulator settings to a different iOS device than you used to run the IoT device. XCode cannot run multiple emulators of the same type.
 
    ![Change the emulator device](media/iot-hub-ios-swift-c2d/change-device.png)
 
-8. Run the project in the device emulator with the **Build and run** button or the key combo **Command + r**.
+7. Run the project in the device emulator with the **Build and run** button or the key combo **Command + r**.
 
-   ![Run the project](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![Screenshot shows the Build and run button.](media/iot-hub-ios-swift-c2d/run-app.png)
 
 ## Send a cloud-to-device message
 

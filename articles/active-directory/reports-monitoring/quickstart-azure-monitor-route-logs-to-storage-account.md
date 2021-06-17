@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Archive Azure Active Directory logs to a storage account | Microsoft Docs
+title: Tutorial - Archive directory logs to a storage account | Microsoft Docs
 description: Learn how to set up Azure Diagnostics to push Azure Active Directory logs to a storage account 
 services: active-directory
 documentationcenter: ''
@@ -73,6 +73,6 @@ To use this feature, you need:
 
 ## Next steps
 
-* [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Interpret audit logs schema in Azure Monitor](./overview-reports.md)
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md)
 * [Frequently asked questions and known issues](concept-activity-logs-azure-monitor.md#frequently-asked-questions)
